@@ -41,11 +41,13 @@ def grapher(file):
 
 
 from collections import deque
+#BFS returning path
 def bfs(graph, start, end):
     visited = set([start])
     queue = deque([[start, list()]])
     while queue:
         node, path = queue.popleft()
+        #returns path if end node is a neighbor of current node
         if end not in graph[node]:
             for adj in graph[node]:
                 if adj not in visited:
@@ -55,15 +57,17 @@ def bfs(graph, start, end):
             return path + [node, end]
     return list()
 
-
+#Alternate problem solution
 def bfsalternating(graph, red, start, end):
     goal = end in red
     visited = set([start])
     queue = deque([[start, start in red]])
     while queue:
         node, state = queue.popleft()
+        #only returns true if the end node is a neighboring node and the current node is the correct color
         if state == goal or end not in graph[node]:
             for adj in graph[node]:
+                #only visits neighbors if they're the opposite color of the current node
                 if state != (adj in red) and adj not in visited:
                     visited.add(adj)
                     queue.append([adj, not state])
@@ -73,6 +77,7 @@ def bfsalternating(graph, red, start, end):
 
 def main():
     import os
+    #loops through all graphs
     for file in os.listdir("data"):
         if file == "README.md":
             continue
