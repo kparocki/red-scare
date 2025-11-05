@@ -1,3 +1,6 @@
+from temp import bfs
+
+
 #graph constructor as adjacency lists
 def noredgrapher(file):
     f = open("data/" + file, "r").readlines()
@@ -37,24 +40,6 @@ def noredgrapher(file):
     return graph, (s, t)
 
 
-from collections import deque
-#BFS returning path
-def bfs(graph, start, end):
-    visited = set([start])
-    queue = deque([[start, list()]])
-    while queue:
-        node, path = queue.popleft()
-        #returns path if end node is a neighbor of current node
-        if end not in graph[node]:
-            for adj in graph[node]:
-                if adj not in visited:
-                    visited.add(adj)
-                    queue.append([adj, path + [node]])
-        else:
-            return path + [node, end]
-    return list()
-
-
 def main():
     import os
     #loops through all graphs
@@ -62,9 +47,9 @@ def main():
         if file == "README.md":
             continue
         print(file)
-        graph, st = noredgrapher(file)
+        graph, (s, t) = noredgrapher(file)
         #finds shortest path and subtracts the end node (aka, becomes number of edges)
-        path = bfs(graph, st[0], st[1])
+        path = bfs(graph, s, t)
         print(len(path) - 1)
         #checks path is consistent with edges in adjacency list
         #print(path)
