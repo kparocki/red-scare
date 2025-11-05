@@ -29,7 +29,7 @@ def grapher(file):
             u, _, v = edge.split()
             graph[u].add(v)
             
-    return graph, [n, m, r], [s, t], red
+    return graph, (n, m, r), (s, t), red
 
 
 #def noredgrapher(file):
@@ -71,13 +71,17 @@ def bfsalternating(graph, red, start, end):
             return True
     return False
 
+def main():
+    import os
+    for file in os.listdir("data"):
+        if file == "README.md":
+            continue
+        print(file)
+        graph, nmr, st, red = grapher(file)
+        print(st[0], "-->", st[1])
+        print(bfs(graph, st[0], st[1]))
+        print(bfsalternating(graph, red, st[0], st[1]))
 
-import os
-for file in os.listdir("data"):
-    if file == "README.md":
-        continue
-    print(file)
-    graph, nmr, st, red = grapher(file)
-    print(st[0], "-->", st[1])
-    print(bfs(graph, st[0], st[1]))
-    print(bfsalternating(graph, red, st[0], st[1]))
+
+if __name__ == "__main__":
+    main()
