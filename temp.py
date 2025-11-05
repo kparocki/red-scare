@@ -19,7 +19,7 @@ def grapher(file):
         else:
             graph[node.strip()] = set()
     #edges  (u -- v or u -> v)  "undirected / directed"
-    if f[n+2].split()[1] == "--":
+    if m > 0 and f[n+2].split()[1] == "--":
         for edge in f[n+2:]:
             u, _, v = edge.split()
             graph[u].add(v)
@@ -74,6 +74,8 @@ def bfsalternating(graph, red, start, end):
 
 import os
 for file in os.listdir("data"):
+    if file == "README.md":
+        continue
     print(file)
     graph, nmr, st, red = grapher(file)
     print(st[0], "-->", st[1])
