@@ -26,12 +26,14 @@ def djikstras(graph: dict[str, set[(int, str)]], start, end):
                 for adj_w, adj_n in graph[node]:
                     # Increase "weight" of path by w+link_w
                     heapq.heappush(heap, (adj_w + w, adj_n))
+        else:
+            dist_to[node] = w
 
         
     if end in dist_to:
         return dist_to[end]
     else:
-        print("No Path!")
+        return # -1 # No Path
 
 
 def few(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
