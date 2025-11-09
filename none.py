@@ -46,11 +46,10 @@ def main():
     for file in os.listdir("data"):
         if file == "README.md":
             continue
-        print(file)
         graph, (s, t) = noredgrapher(file)
         #finds shortest path and subtracts the end node (aka, becomes number of edges)
         path = bfs(graph, s, t)
-        print(len(path) - 1)
+        print(f"{file}: none = {len(path) - 1}")
         #checks path is consistent with edges in adjacency list
         #print(path)
         #for i, node in enumerate(path[:-1]):
