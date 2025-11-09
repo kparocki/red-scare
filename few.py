@@ -17,7 +17,7 @@ def djikstras(graph: dict[str, set[(int, str)]], start, end):
         # Get node with minimal dist
         w, node = heapq.heappop(heap)
         # Check if we have seen node before and new path is shorter
-        if node in dist_to
+        if node in dist_to:
             if w < dist_to[node]: 
                 # If shorter, update dist
                 dist_to[node] = w
