@@ -34,7 +34,7 @@ def djikstras(graph: dict[str, set[(int, str)]], start, end):
     if end in dist_to:
         return dist_to[end]
     else:
-        return # -1 # No Path
+        return -1 # No Path
 
 
 def few(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
@@ -55,7 +55,9 @@ def few(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
         for k, adj in G.items() # Iterating over each node and set of neighbors
     }
     r = djikstras(G_weighted, s, t)
-    return r
+    
+    if r != -1:
+        return r + int(s in red)
 
 
 def main():
