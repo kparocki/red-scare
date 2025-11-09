@@ -17,15 +17,16 @@ def djikstras(graph: dict[str, set[(int, str)]], start, end):
         # Get node with minimal dist
         w, node = heapq.heappop(heap)
         # Check if we have seen node before and new path is shorter
-        if node in dist_to and w < dist_to[node]: 
-            # If shorter, update dist
-            dist_to[node] = w
-            # enqueue neighbors with accummulated path length only if
-            # we have not reached end (only simple shortest paths!)
-            if node != end:
-                for adj_w, adj_n in graph[node]:
-                    # Increase "weight" of path by w+link_w
-                    heapq.heappush(heap, (adj_w + w, adj_n))
+        if node in dist_to
+            if w < dist_to[node]: 
+                # If shorter, update dist
+                dist_to[node] = w
+                # enqueue neighbors with accummulated path length only if
+                # we have not reached end (only simple shortest paths!)
+                if node != end:
+                    for adj_w, adj_n in graph[node]:
+                        # Increase "weight" of path by w+link_w
+                        heapq.heappush(heap, (adj_w + w, adj_n))
         else:
             dist_to[node] = w
 
