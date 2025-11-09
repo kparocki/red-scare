@@ -8,7 +8,7 @@ def djikstras(graph: dict[str, set[(int, str)]], start, end):
     tuples with the name and weight for each outlink from the node.
     """
     # Create "min distance so far"
-    dist_to = {start: 0} | {n : w for w, n in graph[start]}
+    dist_to = {start: 0}
     # Creat Min-Queue
     heap = list(graph[start])
     heapq.heapify(heap)
@@ -17,8 +17,7 @@ def djikstras(graph: dict[str, set[(int, str)]], start, end):
         # Get node with minimal dist
         w, node = heapq.heappop(heap)
         # Check if we have seen node before and new path is shorter
-        if node in dist_to:
-            if w < dist_to[node]: 
+        if (node in dist_to and w < dist_to[node]) or node not in dist_to: 
                 # If shorter, update dist
                 dist_to[node] = w
                 # enqueue neighbors with accummulated path length only if
@@ -27,10 +26,7 @@ def djikstras(graph: dict[str, set[(int, str)]], start, end):
                     for adj_w, adj_n in graph[node]:
                         # Increase "weight" of path by w+link_w
                         heapq.heappush(heap, (adj_w + w, adj_n))
-        else:
-            dist_to[node] = w
 
-        
     if end in dist_to:
         return dist_to[end]
     else:
@@ -55,9 +51,11 @@ def few(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
         for k, adj in G.items() # Iterating over each node and set of neighbors
     }
     r = djikstras(G_weighted, s, t)
-    
+
     if r != -1:
         return r + int(s in red)
+    else:
+        return -1
 
 
 def main():
