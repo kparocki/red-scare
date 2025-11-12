@@ -4,7 +4,7 @@
 *Alternate*: (Gustav & Thomas) Make bipartite and BFS
 
 *many*: longest path in acyclic graph
-*some*: may be derived from many
+*some*: may be derived from many, some extra cases may by derived form non-zero answers to few
 
 ## Questions Meeting 1
 - Do source and target being red matter in which problems?
@@ -19,7 +19,17 @@
 - We seem on the right track
 
 ## Questions Meeting 2
-- ???
+- we recognize that many is a "longest path problem" -> is this what we are supposed to do a reduction on? What detail do we need to give to make this reduction?
+    - many and longest path is a valid reduction - it can be many different NP Hard problems, we should follow the template and be good-to-go!
+- should we be able to solve more than the acyclic cases for many in a "smart way"?
+    - acyclic part is good - **remember cyclic when cycles are purely black is not a problem for the algorithm.**
+
+- for some, we are thinking to use many in all acyclic cases and infer some extra cases using few (i.e. cases where no path exists or where the path with minimum amount of red vertices is >0) - does this make sense? are there other cases we should consider?
+    - this makes sense - we will just describe in the report how we use X and Y to solve Z in this way - it is also still good to mention kinds of graphs that we can find solutions.
+
+- take some of the smaller examples and do by hand, and reason about the correct solution, compare to output of the code. (5-6 different types) - we do not need extensive testing, but we should be able to write some assumptions based on validations done by hand.
+
+- Remember README with description of how to recreate results.txt
 
 ## Questions Meeting 3
 - Ask about report structure and content etc.
