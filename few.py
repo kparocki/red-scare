@@ -10,7 +10,6 @@ def few(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
     of this path, which will directly correspond to the number of red nodes visited
     on the path with the fewest total number of red nodes.
     """
-    # Linear in # of edges to do below transform
     G_weighted = { 
         k: set(
             (1, n) if n in red # following link to a red node = cost of 1

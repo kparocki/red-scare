@@ -81,6 +81,8 @@ def djikstras(graph: dict[str, set[(int, str)]], start, end):
     algorithm to find the shortest path from 'start' to 'end'.
     The graph is expected to be a dictionary with a node as the key and a set of outlink
     tuples with the name and weight for each outlink from the node.
+
+    Returns the length of the shortest path
     """
     import heapq
     # Create "min distance so far"
