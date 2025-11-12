@@ -75,6 +75,39 @@ def bfsalternating(graph, red, start, end):
             return True
     return False
 
+def djikstras(graph: dict[str, set[(int, str)]], start, end):
+    """
+    Takes a graph (directed or undirected) with weighted edges and uses Djikstras
+    algorithm to find the shortest path from 'start' to 'end'.
+    The graph is expected to be a dictionary with a node as the key and a set of outlink
+    tuples with the name and weight for each outlink from the node.
+    """
+    import heapq
+    # Create "min distance so far"
+    dist_to = {start: 0}
+    # Creat Min-Queue
+    heap = list(graph[start])
+    heapq.heapify(heap)
+
+    while heap:
+        # Get node with minimal dist
+        w, node = heapq.heappop(heap)
+        # Check if we have seen node before and new path is shorter
+        if (node in dist_to and w < dist_to[node]) or node not in dist_to: 
+                # If shorter, update dist
+                dist_to[node] = w
+                # enqueue neighbors with accummulated path length only if
+                # we have not reached end (only simple shortest paths!)
+                if node != end:
+                    for adj_w, adj_n in graph[node]:
+                        # Increase "weight" of path by w+link_w
+                        heapq.heappush(heap, (adj_w + w, adj_n))
+
+    if end in dist_to:
+        return dist_to[end]
+    else:
+        return -1 # No Path
+
 def main():
     import os
     #loops through all graphs
