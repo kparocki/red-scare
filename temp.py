@@ -19,25 +19,18 @@ def grapher(file):
         else:
             graph[node.strip()] = set()
     #edges  (u -- v or u -> v)  "undirected / directed"
-    if m > 0 and f[n+2].split()[1] == "--":
-        for edge in f[n+2:]:
-            u, _, v = edge.split()
-            graph[u].add(v)
-            graph[v].add(u)
-    else:
-        for edge in f[n+2:]:
-            u, _, v = edge.split()
-            graph[u].add(v)
+    if m > 0:
+        if f[n+2].split()[1] == "--":
+            for edge in f[n+2:]:
+                u, _, v = edge.split()
+                graph[u].add(v)
+                graph[v].add(u)
+        else:
+            for edge in f[n+2:]:
+                u, _, v = edge.split()
+                graph[u].add(v)
             
     return graph, (n, m, r), (s, t), red
-
-
-#def noredgrapher(file):
-        #problem None ignores red nodes
-        #can implement as altered copy of grapher or alter grapher to take (file, nored)
-#def graphermatrix(file):???
-        #adjacency matrices are faster than adjacency lists for direct true/false edge-lookup, but not neighbor searches
-        #probably not needed for any of the problems
 
 
 from collections import deque
