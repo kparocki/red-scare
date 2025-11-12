@@ -1,7 +1,7 @@
 from temp import bfs
 
 
-#graph constructor as adjacency lists
+#graph constructor as adjacency lists ignoring red nodes
 def noredgrapher(file):
     f = open("data/" + file, "r").readlines()
 
@@ -25,17 +25,18 @@ def noredgrapher(file):
     graph[s] = set()
     graph[t] = set()
     #edges  (u -- v or u -> v)  "undirected / directed"
-    if m > 0 and f[n+2].split()[1] == "--":
-        for edge in f[n+2:]:
-            u, _, v = edge.split()
-            if u not in red and v not in red:
-                graph[u].add(v)
-                graph[v].add(u)
-    else:
-        for edge in f[n+2:]:
-            u, _, v = edge.split()
-            if u not in red and v not in red:
-                graph[u].add(v)
+    if m > 0:
+        if f[n+2].split()[1] == "--":
+            for edge in f[n+2:]:
+                u, _, v = edge.split()
+                if u not in red and v not in red:
+                    graph[u].add(v)
+                    graph[v].add(u)
+        else:
+            for edge in f[n+2:]:
+                u, _, v = edge.split()
+                if u not in red and v not in red:
+                    graph[u].add(v)
             
     return graph, (s, t)
 
