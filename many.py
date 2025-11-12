@@ -7,6 +7,27 @@ from dag import has_cycle
 import os
 
 
+def many_nx(s: str, t: str, adj_list: dict[str, set[str]], red: set[str]) -> int | None:
+    """Finds the path from s to t with the most red nodes.
+    Returns the number of red nodes on the path.
+    If no path exists, returns -1.
+    Runs Bellman-Ford if the graph has no negative cycles, otherwise exhaustive search.
+    If the exhaustive search is terminated early, the function returns None."""
+    G = nx.DiGraph()
+    for v, neighbors in adj_list.items():
+        G.add_node(v)
+        for n in neighbors:
+            G.add_edge(v, n, weight=-1 if n in red else 0)
+    try:
+        return -nx.shortest_path_length(
+            G, s, t, method="bellman-ford", weight="weight"
+        ) + int(s in red)
+    except nx.NetworkXUnbounded:  # Negative cycle detected
+        return many_exhaustive(s, t, G, red)
+    except nx.NetworkXNoPath:
+        return -1
+
+
 def many_sp(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> int:
     """
     Firstly constructs from the initial graph, a graph where entering a red node
@@ -32,21 +53,15 @@ def many_sp(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> int:
         return -1
 
 
-def many_exhaustive(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> str:
-    nxG = nx.Graph(G)
+def many_exhaustive(s: str, t: str, G: nx.DiGraph, red: set[str]) -> int | None:
     try:
         with timeout(5):
-            paths = list(nx.all_simple_paths(nxG, source=s, target=t))
+            paths = list(nx.all_simple_paths(G, source=s, target=t))
             if paths:
-                return str(
-                    max(
-                        sum(1 for v in path if v in red)
-                        for path in paths
-                    )
-                )
-            return "-1"
+                return max(sum(1 for v in path if v in red) for path in paths)
+            return -1
     except RuntimeError:
-        return "?!"
+        return None
 
 
 def main():
@@ -55,9 +70,7 @@ def main():
 
     def run_many(filename):
         G, _, (s, t), red = grapher(filename)
-        if not has_cycle(G):
-            return many_sp(s, t, G, red)
-        return many_exhaustive(s, t, G, red)
+        return many_nx(s, t, G, red)
 
     for file in files:
         print(f"{file}: many = {run_many(file)}")
