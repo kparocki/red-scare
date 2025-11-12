@@ -101,7 +101,7 @@ def djikstras(graph: dict[str, set[(int, str)]], start, end):
     if end in dist_to:
         return dist_to[end]
     else:
-        return -1 # No Path
+        return None # No Path
 
 def main():
     import os
