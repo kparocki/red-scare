@@ -7,5 +7,5 @@ chris,gnm-10-15-1,None,None,None,None,None
 chris,wall-p-3,None,None,None,None,None
 gaz,ski-illustration,None,None,None,None,None
 gaz,gnm-10-15-0,None,None,None,None,None
-mie,grid-5-0,None,None,None,None,None
-mie,rusty-1-17,None,None,None,None,None
+mie,grid-5-0,16,true,8,0,true
+mie,rusty-1-17,10,true,1,0,false
