@@ -1,4 +1,4 @@
-from temp import bfs
+from common import bfs
 
 
 def alternate(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
@@ -10,10 +10,10 @@ def alternate(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
 
 
 def main():
-    from temp import grapher
+    from common import grapher
     import os
 
-    files = os.listdir("data")
+    files = os.listdir("../data")
     files.remove("README.md")
 
     def run_alternate(filename):

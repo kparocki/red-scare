@@ -1,5 +1,4 @@
-from temp import djikstras
-from temp import grapher
+from common import djikstras, grapher
 import os
 
 def few(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
@@ -20,11 +19,14 @@ def few(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
     }
     r = djikstras(G_weighted, s, t)
 
-    return r + (int(s in red) if r != -1 else 0)
+    if r is None:
+        return -1
+    else:
+        return r + int(s in red)
 
 
 def main():
-    files = os.listdir("data")
+    files = os.listdir("../data")
     files.remove("README.md")
 
     def run_few(filename):

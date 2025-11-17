@@ -1,8 +1,7 @@
 import networkx as nx
 from interruptingcow import timeout
 
-from temp import djikstras
-from temp import grapher
+from common import djikstras, grapher
 from dag import has_cycle
 import os
 
@@ -65,7 +64,7 @@ def many_exhaustive(s: str, t: str, G: nx.DiGraph, red: set[str]) -> int | None:
 
 
 def main():
-    files = os.listdir("data")
+    files = os.listdir("../data")
     files.remove("README.md")
 
     def run_many(filename):

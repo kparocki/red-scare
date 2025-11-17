@@ -1,9 +1,9 @@
-from temp import bfs
+from common import bfs
 
 
 #graph constructor as adjacency lists ignoring red nodes
 def noredgrapher(file):
-    f = open("data/" + file, "r").readlines()
+    f = open("../data/" + file, "r").readlines()
 
     #number vertices, edges, reds
     n, m, r = map(int, f[0].strip().split())
@@ -44,7 +44,7 @@ def noredgrapher(file):
 def main():
     import os
     #loops through all graphs
-    for file in os.listdir("data"):
+    for file in os.listdir("../data"):
         if file == "README.md":
             continue
         graph, (s, t) = noredgrapher(file)
