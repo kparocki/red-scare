@@ -33,3 +33,11 @@
 
 ## Questions Meeting 3
 - Ask about report structure and content etc.
+
+# Plan
+- Manual solutions + validate against programmatic solutions (all - optionally additional graphs / double checking)
+- Create Script that runs each algo on each graph and produces output (Thom)
+- Finalize many solution
+- Create some solution based on many & few (Chris)
+- Write up NP-Hardness proof for many (optionally also for some)
+- Write report
