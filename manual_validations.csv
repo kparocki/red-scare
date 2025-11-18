@@ -3,8 +3,8 @@ daniel,wall-z-3,1,false,0,0,false
 daniel,increase-n8-1,1,true,2,1,true
 thomas,common-2-20,None,None,None,None,None
 thomas,smallworld-3-0,None,None,None,None,None
-chris,gnm-10-15-1,None,None,None,None,None
-chris,wall-p-3,None,None,None,None,None
+chris,gnm-10-15-1,1,true,5,1,true
+chris,wall-p-3,1,true,1,0,false
 gaz,ski-illustration,8,true,1,0,false
 gaz,gnm-10-15-0,1,true,1,0,false
 mie,grid-5-0,16,true,8,0,true
