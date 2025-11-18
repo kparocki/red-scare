@@ -1,8 +1,8 @@
 person,graph,none,some,many,few,alternate
 daniel,wall-z-3,1,false,0,0,false
 daniel,increase-n8-1,1,true,2,1,true
-thomas,common-2-20,None,None,None,None,None
-thomas,smallworld-3-0,None,None,None,None,None
+thomas,common-2-20,-1,false,-1,-1,false
+thomas,smallworld-3-0,4,true,3,1,false
 chris,gnm-10-15-1,1,true,5,1,true
 chris,wall-p-3,1,true,1,0,false
 gaz,ski-illustration,8,true,1,0,false
