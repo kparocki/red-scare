@@ -10,6 +10,8 @@ from few import few
 from alternate import alternate
 from many import many_nx, many_sp, many_exhaustive
 
+import time
+
 def main():
     
     output_csv_file = "graph_results.csv"
@@ -27,10 +29,22 @@ def main():
         "Alternate"
     ]
 
+
+    output_timings_file = "timing_results.csv"
+
+    timing_results = []
+    timing_header = [
+        "File",
+        "Time"
+    ]
+
     # Loops through all graphs
     for file in os.listdir("../data"):
         if file == "README.md":
             continue
+
+        start = time.perf_counter()
+
         
         current_results = {
             "File": file,
@@ -68,8 +82,16 @@ def main():
         else:
             current_results["Some"] = "!?"
         
+        end = time.perf_counter()
+        total_time = end - start
+
         # Collect graph data for all algos
         all_results.append(current_results)
+
+        timing_results.append({
+        "File": file,
+        "Time": total_time
+        })
 
     # Create the csv file and write results
     with open(output_csv_file, 'w', newline='') as csvfile:
@@ -78,6 +100,14 @@ def main():
         writer.writeheader()
     
         writer.writerows(all_results)
+
+    # Create the timings file and write results
+    with open(output_timings_file, 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=timing_header)
+        
+        writer.writeheader()
+        
+        writer.writerows(timing_results)
 
 if __name__ == "__main__":
     main()
