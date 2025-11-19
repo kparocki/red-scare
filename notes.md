@@ -32,12 +32,16 @@
 - Remember README with description of how to recreate results.txt
 
 ## Questions Meeting 3
-- Ask about report structure and content etc.
+- What is a reasonable timeout for exhaustive search?
+  - more than 5 seconds (maybe 10-15 seconds, maybe a minute or three?)
+- Are there more cases than "graphs without negative cycles" that we can solve smartly for Many?
+  - Give extra algorithms a shot if we have time
+- Is it okay to hand in a link to cloneable github repo? or do you want a zipped folder in the handin?
+  - Just a link to the github repo or zip - both are fine (also depends on how the submission is set up!) - no specific, just needs to be accessible
+- Do you want empirical time measurements on all problems (as suggested by the template) or is the time complexity enough?
+  - Yes!
+
 
 # Plan
-- Manual solutions + validate against programmatic solutions (all - optionally additional graphs / double checking)
-- Create Script that runs each algo on each graph and produces output (Thom)
-- Finalize many solution
-- Create some solution based on many & few (Chris)
-- Write up NP-Hardness proof for many (optionally also for some)
+- Write up NP-Hardness proof for many
 - Write report
