@@ -34,9 +34,9 @@ def main():
             if paths:
                 few = min(paths)
                 many = max(paths)
-                some = "true" if many > 0 else "false"
+                some = True if many > 0 else False
             else:
-                few, many, some = -1, -1, "false"
+                few, many, some = -1, -1, False
             print(few, many, some)
 
 
