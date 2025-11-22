@@ -16,14 +16,14 @@ def ic(x):
 
 def main():
     import pandas as pd
-    results = pd.read_csv("graph_results.csv", converters={
+    results = pd.read_csv("../graph_results.csv", converters={
         "Some": bc,
         "Many": ic,
         "Alternate": bc
     })
 
     #results vs manual_vals
-    manual = pd.read_csv("../manual_validations.csv").drop(columns="Person")
+    manual = pd.read_csv("../../manual_validations.csv").drop(columns="Person")
 
     for _, row in manual.iterrows():
         file = row["File"]
@@ -47,7 +47,7 @@ def main():
     from brute import allpaths
     import os
     #loops through all graphs
-    for file in os.listdir("../data"):
+    for file in os.listdir("../../data"):
         if file == "README.md":
             continue
         graph, (n, m, r), (s, t), red = grapher(file)

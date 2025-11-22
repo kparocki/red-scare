@@ -2,7 +2,7 @@ import networkx as nx
 from interruptingcow import timeout
 
 from util.common import djikstras, grapher
-from dag import has_cycle
+from util.dag import has_cycle
 import os
 
 
