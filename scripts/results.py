@@ -4,7 +4,7 @@ import csv
 import networkx as nx
 from interruptingcow import timeout
 
-from common import grapher, bfs, djikstras
+from util.common import grapher, bfs, djikstras
 from none import noredgrapher
 from few import few
 from alternate import alternate

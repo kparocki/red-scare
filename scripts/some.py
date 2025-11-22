@@ -1,5 +1,5 @@
 import os
-from common import grapher
+from util.common import grapher
 import networkx as nx
 from many import many_nx
 from few import few

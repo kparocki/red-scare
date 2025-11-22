@@ -1,4 +1,4 @@
-from common import bfs
+from util.common import bfs
 
 
 def alternate(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
@@ -10,7 +10,7 @@ def alternate(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:
 
 
 def main():
-    from common import grapher
+    from util.common import grapher
     import os
 
     files = os.listdir("../data")
