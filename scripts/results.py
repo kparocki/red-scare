@@ -27,11 +27,10 @@ def main():
         "Alternate"
     ]
 
+    files = [n for n in os.listdir("../data") if n != "README.md"]
+    files.sort() # To run in consistent order
     # Loops through all graphs
-    for file in os.listdir("../data"):
-        if file == "README.md":
-            continue
-        
+    for file in files:
         current_results = {
             "File": file,
             "None": None, 
@@ -43,7 +42,7 @@ def main():
         print(file)
 
         # Initialises full graph
-        G, _, _, red = grapher(file)
+        G, _, _, red = grapher(file, data_path="../data/")
         
         #### None ####
         graph_no_reds, (s, t) = noredgrapher(file)
