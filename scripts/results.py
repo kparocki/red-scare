@@ -84,7 +84,7 @@ def main():
         #### Many ####
         start = time.perf_counter()
 
-        res = many_nx(s, t, G, red)
+        res = many_nx(s, t, G, red, timeout_sec)
         current_results["Many"] = "!?" if res == None else res
 
         end = time.perf_counter()
