@@ -37,19 +37,16 @@ def main():
 
     timing_results = []
     timing_header = [
-        "File",
-        "Time"
+        "File", 
+        "None", 
+        "Some", 
+        "Many", 
+        "Few", 
+        "Alternate"
     ]
 
     files = [n for n in os.listdir("../data") if n != "README.md"]
     files.sort() # To run in consistent order
-
-    # Loops through all graphs
-    for file in files:
-        if file == "README.md":
-            continue
-
-        start = time.perf_counter()
 
     # Loops through all graphs
     for file in files:
@@ -76,20 +73,42 @@ def main():
         
         #### None ####
         graph_no_reds, (s, t) = noredgrapher(file)
+        start = time.perf_counter()
+
         path = bfs(graph_no_reds, s, t)
         current_results["None"] = len(path) - 1
+
+        end = time.perf_counter()
+        current_timings["None"] = end - start
     
         #### Many ####
+        start = time.perf_counter()
+
         res = many_nx(s, t, G, red)
         current_results["Many"] = "!?" if res == None else res
+
+        end = time.perf_counter()
+        current_timings["Many"] = end - start
     
         #### Few ####
+        start = time.perf_counter()
+
         current_results["Few"] = few(s, t, G, red)
 
+        end = time.perf_counter()
+        current_timings["Few"] = end - start
+
         #### Alternate ####
+        start = time.perf_counter()
+
         current_results["Alternate"] = alternate(s, t, G, red)
 
+        end = time.perf_counter()
+        current_timings["Alternate"] = end - start
+
         #### Some ####
+        start = time.perf_counter()
+
         if current_results["Many"] != "!?":
             current_results["Some"] = True if current_results["Many"] > 0 else False
         elif current_results["Few"] > 0: 
@@ -98,15 +117,11 @@ def main():
             current_results["Some"] = "!?"
         
         end = time.perf_counter()
-        total_time = end - start
+        current_timings["Some"] = end - start
 
         # Collect graph data for all algos
         all_results.append(current_results)
-
-        timing_results.append({
-        "File": file,
-        "Time": total_time
-        })
+        timing_results.append(current_timings)
 
     # Create the csv file and write results
     with open(output_csv_file, 'w', newline='') as csvfile:
