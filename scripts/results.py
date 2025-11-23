@@ -9,9 +9,12 @@ from none import noredgrapher
 from few import few
 from alternate import alternate
 from many import many_nx, many_sp, many_exhaustive
+import sys
 
 def main():
-    
+    # Take argument as timeout if given, otherwise default to 5 second timeout on exhaustive search
+    timeout_sec = int(sys.argv[1]) if len(sys.argv) > 1 else 5
+
     output_csv_file = "graph_results.csv"
     
     # List to hold the data for the CSV file
