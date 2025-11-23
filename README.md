@@ -15,5 +15,5 @@ python results.py 15
 ```
 
 
-3.  Results will be returned in `graph_results.csv`
+3.  Results will be returned in `graph_results.csv`, runtimes of each problem will be returned in `timing_results.csv`
 
