@@ -1,4 +1,6 @@
 File,None,Some,Many,Few,Alternate
+G-ex.txt,3,True,2,0,True
+P3.txt,-1,True,1,1,True
 bht.txt,6,!?,!?,0,False
 common-1-100.txt,-1,False,-1,-1,False
 common-1-1000.txt,-1,False,-1,-1,False
@@ -31,7 +33,6 @@ common-2-500.txt,4,True,!?,1,True
 common-2-5000.txt,4,True,!?,1,True
 common-2-5757.txt,4,True,!?,1,True
 dodecahedron.txt,1,True,20,2,False
-G-ex.txt,3,True,2,0,True
 gnm-10-15-0.txt,1,True,1,0,False
 gnm-10-15-1.txt,1,True,5,1,True
 gnm-10-20-0.txt,3,True,1,1,False
@@ -62,9 +63,9 @@ grid-10-2.txt,-1,True,!?,2,True
 grid-25-0.txt,324,!?,!?,0,True
 grid-25-1.txt,123,!?,!?,0,True
 grid-25-2.txt,-1,True,!?,5,True
-grid-5-0.txt,14,!?,!?,0,True
-grid-5-1.txt,8,!?,!?,0,True
-grid-5-2.txt,-1,True,!?,1,True
+grid-5-0.txt,14,True,8,0,True
+grid-5-1.txt,8,True,6,0,True
+grid-5-2.txt,-1,True,10,1,True
 grid-50-0.txt,1249,!?,!?,0,False
 grid-50-1.txt,521,!?,!?,0,False
 grid-50-2.txt,-1,True,!?,11,False
@@ -86,7 +87,6 @@ increase-n500-3.txt,1,True,16,1,True
 increase-n8-1.txt,1,True,2,1,True
 increase-n8-2.txt,1,True,1,1,True
 increase-n8-3.txt,1,True,1,0,True
-P3.txt,-1,True,1,1,True
 rusty-1-17.txt,10,True,1,0,False
 rusty-1-2000.txt,-1,False,-1,-1,False
 rusty-1-2500.txt,-1,False,-1,-1,False
