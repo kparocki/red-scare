@@ -21,7 +21,7 @@ def allpaths(graph, start, end):
 def main():
     import os
     #loops through all graphs
-    for file in os.listdir("../data"):
+    for file in os.listdir("../../data"):
         if file == "README.md":
             continue
         graph, (n, m, r), (s, t), red = grapher(file)

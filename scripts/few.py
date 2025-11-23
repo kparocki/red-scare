@@ -1,4 +1,4 @@
-from common import djikstras, grapher
+from util.common import djikstras, grapher
 import os
 
 def few(s: str, t: str, G: dict[str, set[str]], red: set[str]) -> bool:

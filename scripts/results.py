@@ -4,16 +4,19 @@ import csv
 import networkx as nx
 from interruptingcow import timeout
 
-from common import grapher, bfs, djikstras
+from util.common import grapher, bfs, djikstras
 from none import noredgrapher
 from few import few
 from alternate import alternate
 from many import many_nx, many_sp, many_exhaustive
+import sys
 
 import time
 
 def main():
-    
+    # Take argument as timeout if given, otherwise default to 5 second timeout on exhaustive search
+    timeout_sec = int(sys.argv[1]) if len(sys.argv) > 1 else 5
+
     output_csv_file = "graph_results.csv"
     
     # List to hold the data for the CSV file
@@ -38,14 +41,19 @@ def main():
         "Time"
     ]
 
+    files = [n for n in os.listdir("../data") if n != "README.md"]
+    files.sort() # To run in consistent order
+
     # Loops through all graphs
-    for file in os.listdir("../data"):
+    for file in files:
         if file == "README.md":
             continue
 
         start = time.perf_counter()
 
-        
+    # Loops through all graphs
+    for file in files:
+        print(file)
         current_results = {
             "File": file,
             "None": None, 
@@ -54,10 +62,17 @@ def main():
             "Few": None, 
             "Alternate": None
         }
-        print(file)
+        current_timings = {
+            "File": file,
+            "None": None, 
+            "Some": None, 
+            "Many": None, 
+            "Few": None, 
+            "Alternate": None
+        }
 
         # Initialises full graph
-        G, _, _, red = grapher(file)
+        G, _, _, red = grapher(file, data_path="../data/")
         
         #### None ####
         graph_no_reds, (s, t) = noredgrapher(file)

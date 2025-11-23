@@ -1,4 +1,4 @@
-from common import bfs
+from util.common import bfs
 
 
 #graph constructor as adjacency lists ignoring red nodes
