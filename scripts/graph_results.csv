@@ -63,9 +63,9 @@ grid-10-2.txt,-1,True,!?,2,True
 grid-25-0.txt,324,!?,!?,0,True
 grid-25-1.txt,123,!?,!?,0,True
 grid-25-2.txt,-1,True,!?,5,True
-grid-5-0.txt,14,!?,!?,0,True
-grid-5-1.txt,8,!?,!?,0,True
-grid-5-2.txt,-1,True,!?,1,True
+grid-5-0.txt,14,True,8,0,True
+grid-5-1.txt,8,True,6,0,True
+grid-5-2.txt,-1,True,10,1,True
 grid-50-0.txt,1249,!?,!?,0,False
 grid-50-1.txt,521,!?,!?,0,False
 grid-50-2.txt,-1,True,!?,11,False
