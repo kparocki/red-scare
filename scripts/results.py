@@ -17,6 +17,7 @@ def main():
     # Take argument as timeout if given, otherwise default to 5 second timeout on exhaustive search
     timeout_sec = int(sys.argv[1]) if len(sys.argv) > 1 else 5
 
+    data_dir = os.path.dirname(os.path.dirname(__file__)) + os.path.sep + "data/"
     output_csv_file = "graph_results.csv"
     
     # List to hold the data for the CSV file
@@ -45,7 +46,7 @@ def main():
         "Alternate"
     ]
 
-    files = [n for n in os.listdir("../data") if n != "README.md"]
+    files = [n for n in os.listdir(data_dir) if n != "README.md"]
     files.sort() # To run in consistent order
 
     # Loops through all graphs
@@ -69,10 +70,10 @@ def main():
         }
 
         # Initialises full graph
-        G, _, _, red = grapher(file, data_path="../data/")
+        G, _, _, red = grapher(file, data_path=data_dir)
         
         #### None ####
-        graph_no_reds, (s, t) = noredgrapher(file)
+        graph_no_reds, (s, t) = noredgrapher(file, data_path=data_dir)
         start = time.perf_counter()
 
         path = bfs(graph_no_reds, s, t)

@@ -2,8 +2,8 @@ from util.common import bfs
 
 
 #graph constructor as adjacency lists ignoring red nodes
-def noredgrapher(file):
-    f = open("../data/" + file, "r").readlines()
+def noredgrapher(file, data_path="../../data/"):
+    f = open(data_path + file, "r").readlines()
 
     #number vertices, edges, reds
     n, m, r = map(int, f[0].strip().split())
